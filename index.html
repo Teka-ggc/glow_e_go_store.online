@@ -71,7 +71,7 @@
     }
     .produtos-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-      gap: 34px;
+      gap: 34px; margin-bottom: 60px;
     }
     .produto-card {
       background: #fff; border-radius: 24px; box-shadow: 0 2px 16px #be97594d;
@@ -87,7 +87,7 @@
       object-fit: contain; background: none;
     }
     .produto-card h3 { color: #be9759; font-size: 1.13em; margin-bottom: 9px; }
-    .produto-card p { color: #7c5a36; font-size: 0.97em; margin-bottom: 10px; }
+    .produto-card p { color: #7c5a36; font-size: 0.97em; margin-bottom: 10px; line-height: 1.4; }
     .preco { font-weight: bold; color: #be9759; font-size: 1.08em; }
     .botoes-produto {
       margin-top: 16px; display: flex; gap: 12px; justify-content: center;
@@ -141,20 +141,29 @@
       z-index: 2;
       position: relative;
     }
-    #carrinho-box {
-      position: fixed; top: 80px; right: 28px; background: #fff; border-radius: 24px;
-      box-shadow: 0 2px 18px #be97594d; padding: 18px 22px; width: 320px; max-width: 90vw;
-      z-index: 20; display: none;
-    }
-    #carrinho-box h4 { color: #be9759; font-size: 1.13em; margin-bottom: 13px; }
-    #carrinho-list { margin-bottom: 13px; }
-    #carrinho-list li { color: #7c5a36; font-size: 1em; margin-bottom: 6px; }
-    #carrinho-fechar { background: #e8c5e1; color: #be9759; border: none; border-radius: 16px; padding: 3px 11px; cursor: pointer; }
     #carrinho-btn {
       position: fixed; top: 20px; right: 30px; background: #be9759; color: #fff; border-radius: 50%;
-      width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 1.5em; box-shadow: 0 2px 12px #be97594d; cursor: pointer; z-index: 21;
-      border: 3px solid #e8c5e1;
+      width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 1.8em; box-shadow: 0 2px 12px #be97594d; cursor: pointer; z-index: 21;
+      border: 3px solid #e8c5e1; transition: transform .2s;
     }
+    #carrinho-btn:hover { transform: scale(1.1); }
+    #carrinho-contador {
+      position: absolute; top: -8px; right: -8px; background: #d13e00; color: #fff; width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9em;
+    }
+    #carrinho-box {
+      position: fixed; top: 100px; right: 30px; background: #fff; border-radius: 24px;
+      box-shadow: 0 2px 18px #be97594d; padding: 18px 22px; width: 320px; max-width: 90vw;
+      z-index: 20; display: none; max-height: 70vh; overflow-y: auto;
+    }
+    #carrinho-box h4 { color: #be9759; font-size: 1.13em; margin-bottom: 13px; margin-top: 0; }
+    #carrinho-list { margin-bottom: 13px; padding: 0; list-style: none; }
+    #carrinho-list li { color: #7c5a36; font-size: 0.95em; margin-bottom: 10px; padding: 8px; background: #f5f0ed; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; }
+    #carrinho-list b { color: #be9759; }
+    #carrinho-list button { background: #e8c5e1; color: #be9759; border: none; border-radius: 8px; padding: 2px 8px; cursor: pointer; font-size: 0.85em; }
+    #carrinho-fechar { background: #e8c5e1; color: #be9759; border: none; border-radius: 16px; padding: 8px 16px; cursor: pointer; width: 100%; margin-bottom: 8px; font-weight: bold; }
+    #carrinho-total { color: #be9759; font-weight: bold; margin: 10px 0; text-align: center; font-size: 1.05em; }
+    .carrinho-btn-finalizar { background: linear-gradient(90deg,#be9759 65%,#e8c5e1 100%); color: #fff; border: none; border-radius: 22px; padding: 10px 20px; font-size: 1em; cursor: pointer; font-weight: bold; text-decoration: none; display: block; text-align: center; width: 100%; margin-top: 8px; box-shadow: 0 2px 6px #be97592a; }
     .depoimentos {
       max-width: 950px; margin: 60px auto; padding: 0 18px;
     }
@@ -179,7 +188,7 @@
       .nav { gap: 16px; }
       .banner h1 { font-size: 2em; }
       .produtos-title, .depoimentos-title { font-size: 1.35em; }
-      #carrinho-box { right: 0; left: 0; margin: 0 auto; }
+      #carrinho-box { right: 10px; left: 10px; width: auto; }
       .info-produto { width: 98%; }
       .info-produto .info-bg { width: 80px; }
     }
@@ -213,21 +222,20 @@
       <!-- Produto 1 - Paixão Tentadora 100ml -->
       <div class="produto-card">
         <img src="paixao-tentadora-100ml.png" alt="Paixão Tentadora Óleo Deo Corporal 100ml">
-        <h3>Paixão Tentadora Óleo Deo Corporal (100ml)</h3>
-        <p>Sensualidade e feminilidade em cada gota.<br>Fragrância envolvente e toque acetinado.</p>
+        <h3>Paixão Tentadora (100ml)</h3>
+        <p>Sensualidade pura em cada gota. Um aroma envolvente que desperta o charme feminino com toque aveludado. Óleo corporal hidratante que deixa a pele macia e perfumada.</p>
         <span class="preco">6.000 Kz</span>
         <div class="botoes-produto">
-          <button class="btn" onclick="adicionarCarrinho('Paixão Tentadora Óleo Deo Corporal 100ml', '6.000 Kz')">Adicionar ao carrinho</button>
-          <button class="btn" onclick="mostrarInfo(0)">Informações</button>
-          <a href="https://wa.me/244975777067?text=Quero+comprar+Paixao+Tentadora+100ml" class="btn" target="_blank">Comprar</a>
+          <button class="btn" onclick="adicionarCarrinho('Paixão Tentadora 100ml', '6.000 Kz', 6000)">Adicionar</button>
+          <button class="btn" onclick="mostrarInfo(0)">ℹ️ Info</button>
+          <a href="https://wa.me/244975777067?text=Quero+comprar+Paixao+Tentadora+100ml" class="btn" target="_blank">WhatsApp</a>
         </div>
         <div class="info-produto" id="info-produto-0">
           <img src="info-bg.png" class="info-bg" alt="Glow & Go Cosméticos">
           <div class="info-text">
-            <button class="info-close" onclick="fecharInfo(0)">X</button>
+            <button class="info-close" onclick="fecharInfo(0)">✕</button>
             <b>Desperte sua sensualidade!</b><br>
-            Óleo corporal com fragrância marcante, toque aveludado e hidratação prolongada. Deixe-se envolver por um perfume inesquecível que valoriza sua autoestima.<br>
-            Ideal para quem gosta de se destacar.
+            Óleo corporal com fragrância marcante, toque aveludado e hidratação prolongada. Deixe-se envolver por um perfume inesquecível que valoriza sua autoestima. Ideal para quem gosta de se destacar e deixar uma impressão duradoura.
           </div>
         </div>
       </div>
@@ -235,21 +243,20 @@
       <!-- Produto 2 - Paixão Tentadora 200ml -->
       <div class="produto-card">
         <img src="paixao-tentadora-200ml.png" alt="Paixão Tentadora Óleo Deo Corporal 200ml">
-        <h3>Paixão Tentadora Óleo Deo Corporal (200ml)</h3>
-        <p>Sensualidade e feminilidade em cada gota.<br>Fragrância envolvente e toque acetinado.</p>
+        <h3>Paixão Tentadora (200ml)</h3>
+        <p>Dupla dose de sensualidade! Versão maior do nosso clássico preferido. Fragrância envolvente que dura 24h, com hidratação intensa e toque acetinado que seduz.</p>
         <span class="preco">9.000 Kz</span>
         <div class="botoes-produto">
-          <button class="btn" onclick="adicionarCarrinho('Paixão Tentadora Óleo Deo Corporal 200ml', '9.000 Kz')">Adicionar ao carrinho</button>
-          <button class="btn" onclick="mostrarInfo(1)">Informações</button>
-          <a href="https://wa.me/244975777067?text=Quero+comprar+Paixao+Tentadora+200ml" class="btn" target="_blank">Comprar</a>
+          <button class="btn" onclick="adicionarCarrinho('Paixão Tentadora 200ml', '9.000 Kz', 9000)">Adicionar</button>
+          <button class="btn" onclick="mostrarInfo(1)">ℹ️ Info</button>
+          <a href="https://wa.me/244975777067?text=Quero+comprar+Paixao+Tentadora+200ml" class="btn" target="_blank">WhatsApp</a>
         </div>
         <div class="info-produto" id="info-produto-1">
           <img src="info-bg.png" class="info-bg" alt="Glow & Go Cosméticos">
           <div class="info-text">
-            <button class="info-close" onclick="fecharInfo(1)">X</button>
-            <b>Desperte sua sensualidade!</b><br>
-            Óleo corporal com fragrância marcante, toque aveludado e hidratação prolongada. Deixe-se envolver por um perfume inesquecível que valoriza sua autoestima.<br>
-            Ideal para quem gosta de se destacar.
+            <button class="info-close" onclick="fecharInfo(1)">✕</button>
+            <b>Sensualidade amplificada!</b><br>
+            Óleo corporal com fragrância marcante, toque aveludado e hidratação prolongada. Deixe-se envolver por um perfume inesquecível que valoriza sua autoestima. Indicado para uso diário e momentos especiais.
           </div>
         </div>
       </div>
@@ -257,43 +264,83 @@
       <!-- Produto 3 - Paixão Flor de Baunilha 100ml -->
       <div class="produto-card">
         <img src="paixao-baunilha-100ml.png" alt="Paixão Flor de Baunilha Óleo Deo Corporal 100ml">
-        <h3>Paixão Flor de Baunilha Óleo Deo Corporal (100ml)</h3>
-        <p>Hidratação profunda com aroma doce de baunilha.<br>Pele renovada e perfumada por 24h.</p>
+        <h3>Paixão Flor de Baunilha (100ml)</h3>
+        <p>Aroma doce e reconfortante que envolve a pele. Óleo corporal que proporciona hidratação profunda com efeito calmante. Pele renovada e perfumada por 24h seguidas.</p>
         <span class="preco">6.000 Kz</span>
         <div class="botoes-produto">
-          <button class="btn" onclick="adicionarCarrinho('Paixão Flor de Baunilha Óleo Deo Corporal 100ml', '6.000 Kz')">Adicionar ao carrinho</button>
-          <button class="btn" onclick="mostrarInfo(2)">Informações</button>
-          <a href="https://wa.me/244975777067?text=Quero+comprar+Paixao+Flor+de+Baunilha+100ml" class="btn" target="_blank">Comprar</a>
+          <button class="btn" onclick="adicionarCarrinho('Paixão Flor de Baunilha 100ml', '6.000 Kz', 6000)">Adicionar</button>
+          <button class="btn" onclick="mostrarInfo(2)">ℹ️ Info</button>
+          <a href="https://wa.me/244975777067?text=Quero+comprar+Paixao+Flor+de+Baunilha+100ml" class="btn" target="_blank">WhatsApp</a>
         </div>
         <div class="info-produto" id="info-produto-2">
           <img src="info-bg.png" class="info-bg" alt="Glow & Go Cosméticos">
           <div class="info-text">
-            <button class="info-close" onclick="fecharInfo(2)">X</button>
+            <button class="info-close" onclick="fecharInfo(2)">✕</button>
             <b>Proporcione momentos de puro cuidado!</b><br>
-            Óleo corporal com aroma doce, hidratação prolongada e efeito calmante. Ideal para quem busca suavidade e bem-estar na rotina.<br>
-            Experimente e sinta a diferença!
+            Óleo corporal com aroma doce, hidratação prolongada e efeito calmante. Ideal para quem busca suavidade e bem-estar na rotina diária. Textura leve que absorve rapidamente. Experimente e sinta a diferença!
           </div>
         </div>
       </div>
 
-      <!-- Produto 4 - Paixão Inspiradora Rosas Brancas 200ml -->
+      <!-- Produto 4 - Paixão Inspiradora Rosas Brancas 100ml -->
       <div class="produto-card">
-        <img src="paixao-inspiradora-200ml.png" alt="Paixão Inspiradora Óleo Deo Corporal 200ml">
-        <h3>Paixão Inspiradora Óleo Deo Corporal - Rosas Brancas (200ml)</h3>
-        <p>Leveza e elegância para sua pele.<br>Óleo perfumado com hidratação intensa.</p>
-        <span class="preco">9.000 Kz</span>
+        <img src="paixao-inspiradora-rosas-brancas-100ml.jpg" alt="Paixão Inspiradora Óleo Deo Corporal 100ml">
+        <h3>Paixão Inspiradora - Rosas Brancas (100ml)</h3>
+        <p>Leveza e elegância em cada aplicação. Óleo perfumado com a delicadeza das rosas brancas. Hidratação intensa que deixa a pele radiante e macia o dia todo.</p>
+        <span class="preco">6.000 Kz</span>
         <div class="botoes-produto">
-          <button class="btn" onclick="adicionarCarrinho('Paixão Inspiradora Óleo Deo Corporal Rosas Brancas 200ml', '9.000 Kz')">Adicionar ao carrinho</button>
-          <button class="btn" onclick="mostrarInfo(3)">Informações</button>
-          <a href="https://wa.me/244975777067?text=Quero+comprar+Paixao+Inspiradora+Rosas+Brancas+200ml" class="btn" target="_blank">Comprar</a>
+          <button class="btn" onclick="adicionarCarrinho('Paixão Inspiradora Rosas Brancas 100ml', '6.000 Kz', 6000)">Adicionar</button>
+          <button class="btn" onclick="mostrarInfo(3)">ℹ️ Info</button>
+          <a href="https://wa.me/244975777067?text=Quero+comprar+Paixao+Inspiradora+Rosas+Brancas+100ml" class="btn" target="_blank">WhatsApp</a>
         </div>
         <div class="info-produto" id="info-produto-3">
           <img src="info-bg.png" class="info-bg" alt="Glow & Go Cosméticos">
           <div class="info-text">
-            <button class="info-close" onclick="fecharInfo(3)">X</button>
+            <button class="info-close" onclick="fecharInfo(3)">✕</button>
             <b>Exalte o seu charme natural!</b><br>
-            Óleo corporal que une hidratação intensa com a delicadeza das rosas brancas. Textura agradável, perfume sofisticado e efeito radiante na pele.<br>
-            Perfeito para uso diário.
+            Óleo corporal que une hidratação intensa com a delicadeza das rosas brancas. Textura agradável, perfume sofisticado e efeito radiante na pele. Perfeito para uso diário e ocasiões especiais.
+          </div>
+        </div>
+      </div>
+
+      <!-- Produto 5 - Paixão Inspiradora Rosas Brancas 200ml -->
+      <div class="produto-card">
+        <img src="paixao-inspiradora-rosas-brancas-200ml.jpg" alt="Paixão Inspiradora Óleo Deo Corporal 200ml">
+        <h3>Paixão Inspiradora - Rosas Brancas (200ml)</h3>
+        <p>Elegância em dose maior! Hidratação que dura 24h com aroma sofisticado de rosas brancas. Pele sedosa, brilhante e perfumada. O choice perfeito para quem ama qualidade.</p>
+        <span class="preco">9.000 Kz</span>
+        <div class="botoes-produto">
+          <button class="btn" onclick="adicionarCarrinho('Paixão Inspiradora Rosas Brancas 200ml', '9.000 Kz', 9000)">Adicionar</button>
+          <button class="btn" onclick="mostrarInfo(4)">ℹ️ Info</button>
+          <a href="https://wa.me/244975777067?text=Quero+comprar+Paixao+Inspiradora+Rosas+Brancas+200ml" class="btn" target="_blank">WhatsApp</a>
+        </div>
+        <div class="info-produto" id="info-produto-4">
+          <img src="info-bg.png" class="info-bg" alt="Glow & Go Cosméticos">
+          <div class="info-text">
+            <button class="info-close" onclick="fecharInfo(4)">✕</button>
+            <b>Elegância e hidratação sem limites!</b><br>
+            Óleo corporal que une hidratação intensa com a delicadeza das rosas brancas. Textura leve, rápida absorção e perfume que dura o dia todo. Indicado para todos os tipos de pele.
+          </div>
+        </div>
+      </div>
+
+      <!-- Produto 6 - Paixão Cacau & Pimenta Rosa 200ml -->
+      <div class="produto-card">
+        <img src="paixao-cacau-pimenta-rosa-200ml.jpg" alt="Paixão Cacau & Pimenta Rosa Óleo Deo Corporal 200ml">
+        <h3>Paixão Cacau & Pimenta Rosa (200ml)</h3>
+        <p>Combinação especial e envolvente! Aroma exótico de cacau com toque de pimenta rosa. Pele sedosa, perfumada e hidratada por 24h. Uma experiência sensorial única.</p>
+        <span class="preco">9.000 Kz</span>
+        <div class="botoes-produto">
+          <button class="btn" onclick="adicionarCarrinho('Paixão Cacau & Pimenta Rosa 200ml', '9.000 Kz', 9000)">Adicionar</button>
+          <button class="btn" onclick="mostrarInfo(5)">ℹ️ Info</button>
+          <a href="https://wa.me/244975777067?text=Quero+comprar+Paixao+Cacau+Pimenta+Rosa+200ml" class="btn" target="_blank">WhatsApp</a>
+        </div>
+        <div class="info-produto" id="info-produto-5">
+          <img src="info-bg.png" class="info-bg" alt="Glow & Go Cosméticos">
+          <div class="info-text">
+            <button class="info-close" onclick="fecharInfo(5)">✕</button>
+            <b>Transforme seu banho num ritual de beleza!</b><br>
+            Fórmula com óleo de amêndoas, textura leve e aroma marcante. Hidrata profundamente, deixando a pele macia, sedosa e perfumada o dia todo. Indicado para todos os tipos de pele.
           </div>
         </div>
       </div>
@@ -301,12 +348,17 @@
     </div>
   </section>
 
-  <div id="carrinho-btn" onclick="abrirCarrinho()" title="Ver carrinho">🛒</div>
+  <div id="carrinho-btn" onclick="abrirCarrinho()" title="Ver carrinho">
+    🛒
+    <div id="carrinho-contador" style="display:none;">0</div>
+  </div>
+  
   <div id="carrinho-box">
-    <h4>Seu carrinho</h4>
+    <button id="carrinho-fechar" onclick="fecharCarrinho()">✕ Fechar carrinho</button>
+    <h4>🛍️ Seu carrinho</h4>
     <ul id="carrinho-list"></ul>
-    <button id="carrinho-fechar" onclick="fecharCarrinho()">Fechar</button>
-    <a href="https://wa.me/244975777067?text=Quero+finalizar+minha+compra" class="btn" style="margin-top:12px;display:block;text-align:center;">Finalizar pelo WhatsApp</a>
+    <div id="carrinho-total"></div>
+    <a href="https://wa.me/244975777067" class="carrinho-btn-finalizar" target="_blank" id="btn-whatsapp">📱 Finalizar compra via WhatsApp</a>
   </div>
 
 <section class="depoimentos" id="depoimentos">
@@ -399,43 +451,84 @@
   </div>
   <div style="margin-top:9px;font-size:0.93em;">™ 2025 Glow & Go Cosméticos</div>
 </footer>
+
   <script>
     let carrinho = [];
-    function adicionarCarrinho(nome, preco){
-      carrinho.push({nome, preco});
+
+    function adicionarCarrinho(nome, preco, valor){
+      carrinho.push({nome, preco, valor});
       atualizarCarrinho();
-      document.getElementById('carrinho-box').style.display = 'block';
+      mostrarContador();
     }
+
     function atualizarCarrinho(){
       const lista = document.getElementById('carrinho-list');
       lista.innerHTML = '';
+      let total = 0;
+
       if(carrinho.length === 0){
-        lista.innerHTML = '<li>Seu carrinho está vazio.</li>';
+        lista.innerHTML = '<li style="text-align:center; padding: 20px; background: none;">Nenhum item no carrinho 🛍️</li>';
+        document.getElementById('carrinho-total').innerHTML = '';
       } else {
-        carrinho.forEach((prod,i)=>{
-          lista.innerHTML += `<li>${prod.nome} <b>${prod.preco}</b> <button onclick="removerItem(${i})" style="margin-left:8px;font-size:0.9em;">remover</button></li>`;
+        carrinho.forEach((prod, i) => {
+          total += prod.valor;
+          lista.innerHTML += `
+            <li>
+              <div>
+                <strong>${prod.nome}</strong><br>
+                <span style="color:#be9759;">${prod.preco}</span>
+              </div>
+              <button onclick="removerItem(${i})">🗑️</button>
+            </li>
+          `;
         });
+        document.getElementById('carrinho-total').innerHTML = `<strong>💰 Total: ${total.toLocaleString('pt-AO')} Kz</strong>`;
       }
     }
+
+    function mostrarContador(){
+      const contador = document.getElementById('carrinho-contador');
+      if(carrinho.length > 0){
+        contador.style.display = 'flex';
+        contador.textContent = carrinho.length;
+      } else {
+        contador.style.display = 'none';
+      }
+    }
+
     function abrirCarrinho(){
       document.getElementById('carrinho-box').style.display = 'block';
       atualizarCarrinho();
     }
+
     function fecharCarrinho(){
       document.getElementById('carrinho-box').style.display = 'none';
     }
+
     function removerItem(i){
-      carrinho.splice(i,1);
+      carrinho.splice(i, 1);
       atualizarCarrinho();
+      mostrarContador();
     }
 
     // Informações do produto
     function mostrarInfo(i){
       document.getElementById('info-produto-'+i).style.display = 'block';
     }
+
     function fecharInfo(i){
       document.getElementById('info-produto-'+i).style.display = 'none';
     }
+
+    // Fechar carrinho ao clicar fora dele
+    document.addEventListener('click', function(event){
+      const carrinhoBox = document.getElementById('carrinho-box');
+      const carrinhoBtn = document.getElementById('carrinho-btn');
+      
+      if(!carrinhoBox.contains(event.target) && !carrinhoBtn.contains(event.target)){
+        fecharCarrinho();
+      }
+    });
   </script>
 </body>
 </html>
